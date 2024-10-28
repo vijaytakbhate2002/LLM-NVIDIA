@@ -1,12 +1,19 @@
 from openai import OpenAI
 import streamlit as st
 import re
+from dotenv import load_dotenv
+import os
+
+load_dotenv() 
+secret_key = os.getenv("SECRET_KEY")
+
+
 
 st.header("GPT - Powred with (NVIDIA/llama-3.1)", divider='rainbow')
 
 client = OpenAI(
   base_url = "https://integrate.api.nvidia.com/v1",
-  api_key = "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"
+  api_key = secret_key # use your API KEY
 )
 
 user_input = st.text_area("Ask me anything...")
